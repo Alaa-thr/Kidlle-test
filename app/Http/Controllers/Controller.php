@@ -24,7 +24,7 @@ class Controller extends BaseController
         //create dto with necessary data
         $paimentDto = new PaimentDto($amount,$currency,$cardNumber);
         //call paiment processe
-        $result = $this->ProcessPayment($paimentDto);
+        $result = $service->ProcessPayment($paimentDto);
         return response()->json([
             'succes' => $result,
             'error_message' => ''
@@ -33,7 +33,7 @@ class Controller extends BaseController
     public function show($paimentType,$id){
         try{
             //cal paiment details
-            $result = $this->getPayment($paimentType, $id);
+            $result = $service->getPayment($paimentType, $id);
             return response()->json([
                 'succes' => true,
                 'error_message' => '',
